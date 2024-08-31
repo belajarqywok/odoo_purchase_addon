@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <menuitem
+        id="parent_autodidak_purchase_id"
+        name="Pembelian"
+        sequence="10" />
+        <menuitem
+            id="child_autodidak_purchase_id"
+            name="pembelian"
+            parent="autodidak_purchase.parent_autodidak_purchase_id"
+            action="autodidak_purchase.purchase_actions_id"/>
+        <menuitem
+            id="child_autodidak_brand_id"
+            name="brand"
+            parent="autodidak_purchase.parent_autodidak_purchase_id"
+            action="autodidak_purchase.brand_actions_id"/>
+        <menuitem
+            id="child_autodidak_purchase_report_wizard_id"
+            name="Report"
+            parent="autodidak_purchase.parent_autodidak_purchase_id"
+            action="autodidak_purchase.actions_autodidak_purchase_wizard_report_id"/>
+</odoo>

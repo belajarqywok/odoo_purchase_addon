@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="sequence_autodidak_purchase_id" model="ir.sequence">
+        <field name="name">sequence_autodidak_purchase_id</field>
+        <field name="code">autodidak.purchase</field>
+        <field name="prefix">AP/%(year)s/%(month)s/</field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+        <field eval="True" name="use_date_range"/>
+        <field eval="False" name="company_id"/>
+        <field name="padding">5</field>
+    </record>
+</odoo>

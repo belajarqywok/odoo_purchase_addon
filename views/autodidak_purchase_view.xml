@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="autodidak_purchase_tree_view_id" model="ir.ui.view">
+        <field name="name">autodidak_purchase_tree_view_id</field>
+        <field name="model">autodidak.purchase</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tanggal"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="autodidak_purchase_form_view_id" model="ir.ui.view">
+        <field name="name">autodidak_purchase_form_view_id</field>
+        <field name="model">autodidak.purchase</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="object" name="funct_approved" string="Approve" attrs="{'invisible': [('status', '!=', 'draft')]}" class="oe_highlight"/>
+                    <button type="object" name="funct_set_to_done" string="Set to Done" attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight"/>
+                    <button type="object" name="get_excel_report" string="Print Excel" />
+                    <field name="status" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+                            <field name="brand_ids" widget="many2many_tags" attrs="{'required': [('status', '=', 'draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="tanggal"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page>
+                            <field name="autodidak_purchase_ids" nolabel="1" options="{'reload_on_button': true}">
+                                <tree edit="true" editable="buttom" create="true" delete="true">
+                                    <field name="product_id"/>
+                                    <field name="description"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id"/>
+                                    <field name="price"/>
+                                    <field name="subtotal"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="autodidak_purchase_kanban_view_id" model="ir.ui.view">
+        <field name="name">autodidak_purchase_kanban_view_id</field>
+        <field name="model">autodidak.purchase</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="tanggal"/>
+                <field name="status"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top_mb16">
+                                <strong>
+                                    <span>
+                                        <t t-esc="record.name.value"/>
+                                    </span>
+                                </strong>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <span>
+                                        <t t-esc="record.tanggal.value"/>
+                                    </span>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <span>
+                                        <t t-esc="record.status.value"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="autodidak_brand_tree_view_id" model="ir.ui.view">
+        <field name="name">autodidak_brand_tree_view_id</field>
+        <field name="model">autodidak.brand</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="autodidak_purchase_wizard_report_id" model="ir.ui.view">
+        <field name="name">autodidak_purchase_wizard_report_id</field>
+        <field name="model">autodidak.purchase.report.wizard</field>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <form string="Report Autodidak Purchase">
+                <sheet>
+                    <group col="4">
+                        <field name="start_date" string="Start Date"/>
+                        <field name="end_date" string="End Date"/>
+                    </group>
+                </sheet>
+                <footer>
+<!--                <button type="object" name="" string="Submit" class="btn-primary"/>-->
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="inherit_product_template" model="ir.ui.view">
+        <field name="name">inherit_product_template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="product_description"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

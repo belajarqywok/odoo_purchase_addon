@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_create,perm_write,perm_unlink
+access_autodidak_purchase,access_autodidak_purchase,model_autodidak_purchase,,1,1,1,1
+access_autodidak_purchase_line,access_autodidak_purchase_line,model_autodidak_purchase_line,,1,1,1,1
+access_autodidak_brand,access_autodidak_brand,model_autodidak_brand,,1,1,1,1
+access_autodidak_purchase_report_wizard,access_autodidak_purchase_report_wizard,model_autodidak_purchase_report_wizard,,1,1,1,1

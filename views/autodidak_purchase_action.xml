@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="purchase_actions_id" model="ir.actions.act_window">
+        <field name="name">Pembelian</field>
+        <field name="res_model">autodidak.purchase</field>
+    </record>
+
+    <record id="pembelian_actions_tree_view_id" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="autodidak_purchase.autodidak_purchase_tree_view_id"/>
+        <field name="act_window_id" ref="autodidak_purchase.purchase_actions_id"/>
+    </record>
+
+    <record id="pembelian_actions_kanban_view_id" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="autodidak_purchase.autodidak_purchase_kanban_view_id"/>
+        <field name="act_window_id" ref="autodidak_purchase.purchase_actions_id"/>
+    </record>
+
+    <record id="pembelian_actions_form_view_id" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="autodidak_purchase.autodidak_purchase_form_view_id"/>
+        <field name="act_window_id" ref="autodidak_purchase.purchase_actions_id"/>
+    </record>
+
+    <record id="brand_actions_id" model="ir.actions.act_window">
+        <field name="name">Brand</field>
+        <field name="res_model">autodidak.brand</field>
+    </record>
+
+    <record id="brand_actions_tree_view_id" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="autodidak_purchase.autodidak_brand_tree_view_id"/>
+        <field name="act_window_id" ref="autodidak_purchase.brand_actions_id"/>
+    </record>
+
+    <record id="actions_autodidak_purchase_wizard_report_id" model="ir.actions.act_window">
+        <field name="name">Report Autodidak Purchase</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">autodidak.purchase.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="autodidak_purchase.autodidak_purchase_wizard_report_id"/>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">No Data</p>
+        </field>
+    </record>
+</odoo>

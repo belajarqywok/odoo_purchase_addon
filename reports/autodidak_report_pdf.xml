@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <report
+        id="menu_report_autodidak_pembelian_id"
+        model="autodidak.purchase"
+        string="Print PDF"
+        report_type="qweb-pdf"
+        name="autodidak_purchase.report_data_autodidak_purchase_id"
+        file="autodidak_purchase.report_data_autodidak_purchase_id"
+    />
+
+    <template id="report_data_autodidak_purchase_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="header" style="padding-top-50px;">
+                    <table style="border:0px" width="100%">
+                        <tr style="padding-10px;">
+                            <td style="padding-2px;" width="50%">
+                                <span t-field="o.name" />
+                            </td>
+                            <td style="padding-2px; text-align:right;">
+                                <span t-field="o.tanggal" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <style>
+                        table, tr, td{
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                        }
+                    </style>
+                    <table width="100%">
+                        <tr>
+                            <td width="35%">
+                                <span>Produk</span>
+                            </td>
+                            <td width="10%">
+                                <span>Qty</span>
+                            </td>
+                            <td width="10%">
+                                <span>Satuan</span>
+                            </td>
+                            <td width="20%">
+                                <span>Harga</span>
+                            </td>
+                            <td width="25%">
+                                <span>Subtotal</span>
+                            </td>
+                        </tr>
+                        <t t-foreach="o.autodidak_purchase_ids" t-as="line">
+                            <tr>
+                                <td width="35%">
+                                    <span t-field="line.product_id.name" />
+                                </td>
+                                <td width="10%">
+                                    <span t-field="line.quantity" />
+                                </td>
+                                <td width="10%">
+                                    <span t-field="line.uom_id.name" />
+                                </td>
+                                <td width="20%">
+                                    <span t-field="line.price" />
+                                </td>
+                                <td width="25%">
+                                    <span t-field="line.subtotal" />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
